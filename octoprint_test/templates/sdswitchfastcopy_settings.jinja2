@@ -1,0 +1,96 @@
+<form class="form-horizontal">
+	<div isdswitchfstcopy="error" class="alert alert-danger" role="alert" style="display:none;">
+		<div isdswitchfstcopychild="conf" style="display:none;">
+			<b>ERROR :</b> this plugin requires a settings on your PI, I invite you to follow the procedure here:
+			<a class="btn btn-primary" href="https://github.com/devildant/OctoPrint-SdSwitchFastCopy" target="_blank">Settings</a>
+		</div>
+		<div isdswitchfstcopychild="GPIO" style="display:none;">
+			<b>ERROR :</b> another plugin forces GPIO mode to <span id="sdswitchfstcopySubErrorText">BOARD</span>, this mode is incompatible with the one you have configured
+		</div>
+	</div>
+	
+    <h4>General</h4>
+	<hr/>
+	<div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" id="sdswitchfactory_bcmused" data-bind="checked: settings.plugins.sdswitchfastcopy.bcmused">Use BCM MODE
+			</label>
+        </div>
+    </div>
+	<div class="control-group">
+        <label class="control-label">{{ _('PI Pin') }}</label>
+        <div class="controls">
+            <div class="input-append">
+                <input type="number" min='0' class="input-mini text-right" data-bind="value: settings.plugins.sdswitchfastcopy.GPIO">
+                <span class="add-on">PIN</span>
+            </div>
+        </div>
+    </div>
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+			<input type="checkbox" id="sdswitchfactory_showname" data-bind="checked: settings.plugins.sdswitchfastcopy._showname">Show real name on printer
+			</label>
+		</div>
+	</div>
+	<div style="padding-left:20px;"  data-bind="visible: settings.plugins.sdswitchfastcopy._showname">
+	<div class="controls">
+		<span>
+			the GCODE M117 can be sent several times to the printer by your slicer.<br/>
+			to be sure to have the file name at the right time it is necessary to add a specific M117 instruction in your boot gcode (on your slicer).<br/>
+			the field below allows to choose which instruction M117 will be triggered, in order to display the name of the file<br/>
+			<span style="color:red;">Warning: do not put an accent, point, comma...<br/>The allowed characters are: a to z, A to Z</span>
+		</span>
+	</div>
+	<div class="control-group">
+        <div class="controls">
+            <div class="input-append">
+				<span class="add-on">M117</span>
+                <input type="text" class="input text-right" data-bind="value: settings.plugins.sdswitchfastcopy._showname_trigger">
+            </div>
+        </div>
+    </div>
+	</div>
+	<div class="control-group">
+        <button class="btn btn-danger pull-right" id="resetsdswitchfstcopy"><i class="fa fa-spinner fa-spin" style="display: none;"></i>Reset module</button>
+    </div>
+	<h4>Options</h4>
+	<hr/>
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+			<input type="checkbox" id="sdswitchfactory_remove" data-bind="checked: settings.plugins.sdswitchfastcopy._remove">Remove file after print finished
+			</label>
+		</div>
+	</div>
+	<div style="padding-left:20px;"  data-bind="visible: settings.plugins.sdswitchfastcopy._remove">
+		<div class="control-group">
+			<div class="controls">
+				<label class="checkbox">
+				<input type="checkbox" id="sdswitchfactory_remove_event_done" data-bind="checked: settings.plugins.sdswitchfastcopy._remove_event_done">Event print done
+				</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<label class="checkbox">
+				<input type="checkbox" id="sdswitchfactory_remove_event_cancelled" data-bind="checked: settings.plugins.sdswitchfastcopy._remove_event_cancelled">Event print cancelled
+				</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<label class="checkbox">
+				<input type="checkbox" id="sdswitchfactory_remove_event_failed" data-bind="checked: settings.plugins.sdswitchfastcopy._remove_event_failed">Event print failed
+				</label>
+			</div>
+		</div>
+	</div>
+</form>
+<hr style="padding-top: 20px;"/>
+<h4>Where to buy the module</h4>
+	<a href="#">http://...</a>
+	<h4>Connection to PI</h4>
+	<div>By default, it is recommended to connect the module to pin 7 (BOARD, or pin 4 for BCM) of the PI, but if necessary, you can change it, you just have to enter the PIN number in the "PI Pin" field.</div>
+	<div><a href ="https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/" target="_blank">example<a></div>

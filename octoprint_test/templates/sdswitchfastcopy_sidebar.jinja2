@@ -1,0 +1,50 @@
+<div class="input-group">
+	<center><span id="sdswitchfstcopysideloader" class="fa fa-spinner fa-spin fa-4x"></span></center>
+	<div isdswitchfstcopy="error" class="alert alert-danger" role="alert" style="display:none;">
+			
+			<center isdswitchfstcopychild="conf" style="display:none;">
+				<b>ERROR :</b> this plugin requires a settings on your PI, I invite you to follow the procedure here:
+				<a class="btn btn-primary" href="https://github.com/devildant/OctoPrint-SdSwitchFastCopy" target="_blank">Settings</a>
+			</center>
+			<center isdswitchfstcopychild="GPIO" style="display:none;">
+				<b>ERROR :</b> another plugin forces GPIO mode to <span id="sdswitchfstcopySubErrorText">BOARD</span>, this mode is incompatible with the one you have configured in the "sd switch fast copy" settings
+			</center>
+	</div>
+	<div isdswitchfstcopy="success" style="display:none;">
+		<div sdswitchfstcopyside="success"  >
+			<div><span>State: </span><b id="sdswitchfstcopysideSuccessState">Operational</b></div>
+			<div style="display:none;"><span>Filename: </span><b id="sdswitchfstcopysideSuccessFilename">-</b></div>
+			<div style="display:none;"><span>Size: </span><b id="sdswitchfstcopysideSuccessSize">-</b></div>
+			<div style="display:none;"><span>Average speed: </span><b id="sdswitchfstcopysideSuccessSpeed">-</b></div>
+			<div style="display:none;"><span>Time: </span><b id="sdswitchfstcopysideSuccessTime">-</b></div>
+			<div id="sdswitchfstcopysideProgress" style="display:none;">
+				<div class="progress progress-striped active">
+				  <div class="bar" style="width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+		<div sdswitchfstcopyside="error" style="display:none;">
+			<div class="alert alert-danger" role="alert" sdswitchfstcopyside="error">
+				<div><span>State: </span><b id="sdswitchfstcopysideErrorState">Error</b></div>
+				<div><span>Filename: </span><b id="sdswitchfstcopysideErrorFilename">-</b></div>
+				<div><span>Info: </span><b id="sdswitchfstcopysideErrorInfo">-</b></div>
+			</div>
+		</div>
+		<button class="btn btn-danger btn-block" lock="none" id="formatsdswitchfstcopy"><i class="fa fa-spinner fa-spin" style="display: none;"></i>Format SD</button>
+	</div>
+	<div id="sdswitchfstcopyWarning" class="modal hide fade">
+    <div class="modal-header">
+        <a href="#" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+        <h3>SD Switch Fast Copy</h3>
+    </div>
+    <div class="modal-body">
+		<p>
+            {{ _('Are you sure you want to format SD?') }}
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ _('Cancel') }}</a>
+        <a href="#" class="btn btn-danger" data-dismiss="modal" id="sdswitchfstcopyFormatSD">{{ _('Format') }}</a>
+    </div>
+</div>
+</div>
