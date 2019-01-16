@@ -26,7 +26,7 @@ class TestPlugin(octoprint.plugin.SettingsPlugin,
 	def sdcard(self, printer, filename, absolutePath, sd_upload_started, success_hook_sdcopy, error_hook_sdcopy, *args, **kwargs):
 		remoteName = "test.gco"
 		
-		sd_upload_started(filename, remoteName)
+		#sd_upload_started(filename, remoteName)
 		def process():
 			time.sleep(10)
 			success_hook_sdcopy(filename, remoteName, 10)
